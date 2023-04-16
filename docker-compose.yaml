@@ -1,0 +1,58 @@
+volumes:
+  postgres-data:
+      external: true
+  pg-admin:
+    external: true
+services:
+  postgres:
+      build:
+          context: ./relational-data
+          dockerfile: ./Dockerfile.dev
+      volumes:
+          - postgres-data:/var/lib/postgresql/data
+      environment:
+          - POSTGRES_MULTIPLE_DATABASES=therapy
+          - POSTGRES_PASSWORD=test
+      ports:
+          - 15432:5432
+
+  therapy:
+    build:
+      context: ./therapy
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - 8090:8000
+    volumes:
+      - ./therapy:/app
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      WAIT_HOSTS: postgres:5432
+      SIGNING_KEY: ${SIGNING_KEY}
+      ZIPCODE_API_KEY: ${ZIPCODE_API_KEY}
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
+
+  ghi:
+    image: node:lts-bullseye
+    command: /bin/bash run.sh
+    working_dir: /app
+    volumes:
+      - ./ghi:/app
+    ports:
+      - "3000:3000"
+    environment:
+      HOST_OS: ${OS}
+      NODE_ENV: development
+      HOST: "0.0.0.0"
+      REACT_APP_THERAPYHUB_API_HOST: http://localhost:8090/
+
+  pg-admin:
+    image: dpage/pgadmin4
+    volumes:
+      - pg-admin:/var/lib/pgadmin
+    ports:
+      - 8082:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: username@hackreactor.com
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_DISABLE_POSTFIX: 1
