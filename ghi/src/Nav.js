@@ -38,13 +38,8 @@ function Nav() {
             {!isLoggedIn && (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/client/login">
-                    Client Login
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/therapist/login">
-                    Therapist Login
+                  <NavLink className="nav-link" to="/login">
+                    Login
                   </NavLink>
                 </li>
                 <li className="nav-item">

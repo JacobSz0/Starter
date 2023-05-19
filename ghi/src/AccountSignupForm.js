@@ -62,8 +62,8 @@ function AccountSignupForm() {
     <div className="container">
       <div className="row">
         <div className="offset-3 col-6">
-          <div className="shadow p-4 mt-4">
-            <h1>Create account</h1>
+          <div className="shadow p-4 mt-4 bg2">
+            <h1 className="text">Create account</h1>
             <form onSubmit={handleCreateAccount} id="create-new-client-form">
               <div className="form-floating mb-3">
                 <input
@@ -110,7 +110,6 @@ function AccountSignupForm() {
               </div>
               <p>
                 {" "}
-                <br></br>
               </p>
               <div>
                 <button className="btn btn-outline-info my-2 my-sm-0">

@@ -28,8 +28,8 @@ function TherapistLoginForm() {
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Therapist Login</h1>
+        <div className="shadow p-4 mt-4 bg2">
+          <h1 className="text">Login</h1>
           <form onSubmit={handleSubmit} id="login-therapist-form">
             <div className="form-floating mb-3">
               <input
@@ -59,15 +59,15 @@ function TherapistLoginForm() {
               />
               <label htmlFor="password">password</label>
             </div>
-            <button
-              className="btn btn-outline-info my-2 my-sm-0"
-
-            >
-              Submit
-            </button>
+            <div className="padding">
+              <button
+                className="btn btn-outline-info my-2 my-sm-0"
+              >
+                Submit
+              </button>
+            </div>
             <div>
-              <NavLink to="/account"
-                className="btn btn-light">
+              <NavLink className="link" to="/account">
                   Don't have an account? Register here!</NavLink>
             </div>
           </form>

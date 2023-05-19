@@ -27,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="account" element={<AccountSignupForm />} />
-            <Route path="/account/login" element={<AccountLoginForm />} />
+            <Route path="/login" element={<AccountLoginForm />} />
           </Routes>
         </div>
         <Foot/>

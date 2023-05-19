@@ -56,3 +56,19 @@ footer a {
 footer a:hover {
   text-decoration: rgb(255, 255, 255);
 }
+
+.bg2{
+  background-color: #535252;
+}
+
+.text{
+  color: white;
+}
+
+.padding{
+  padding-bottom: 15px;
+}
+
+.link{
+  color: rgb(36, 204, 255);
+}
